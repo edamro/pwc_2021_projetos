@@ -1,0 +1,11 @@
+Criação da pasta Images no projeto, onde serão colocadas as figuras
+Bootstrap.cs -> inclusão da figura de pano de fundo - linhas 5035 a 5041
+Na pasta Views/Shared, arquivo _Layout.cshtml -> alteração do rodapé, título e da barra de navegação;
+Nas pastas Receita, Categoria e GrauDificuldade pertencentes a pasta Views, todos os arquivos .cshtml foram alterados para
+colocar nomes amigáveis;
+Na pasta Views/Home : About.cshtml -> alteração do cabeçalho, nomes amigáveis e inclusão de 2 listas não ordenadas;
+Na pasta Views/Home : Contact.cshtml -> alteração do cabeçalho e das informações;
+Na pasta Views/Home : Index.cshtml -> linha 7: alinhamento do cabeçalho, linhas 11 a 16: alteração do texto, linhas 19 e 22,
+ajuste dos textos e na linha 23: alteração do link do botão.
+Nos arquivos da pasta Controller, esceto no HomeController.cs: alteração nos métodos CRUD, incluindo mensagens de erro;
+No arquivo HomeController.cs da pasta Controller: alteração das mensagens em About e Contact.

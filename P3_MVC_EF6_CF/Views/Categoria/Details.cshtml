@@ -1,0 +1,26 @@
+﻿@model P3_MVC_EF6_CF.Models.Categoria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.CategoriaID, "Categoria")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaNome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoriaID }) |
+    @Html.ActionLink("Voltar a lista", "Index")
+</p>

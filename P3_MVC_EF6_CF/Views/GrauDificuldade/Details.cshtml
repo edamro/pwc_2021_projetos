@@ -1,0 +1,26 @@
+﻿@model P3_MVC_EF6_CF.Models.GrauDificuldade
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Grau de Dificuldade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.GrauDificuldadeID, "Grau de Dificuldade")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrauDificuldadeNome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.GrauDificuldadeID }) |
+    @Html.ActionLink("Voltar a lista", "Index")
+</p>

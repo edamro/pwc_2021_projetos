@@ -1,0 +1,33 @@
+﻿@model IEnumerable<P3_MVC_EF6_CF.Models.GrauDificuldade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Criar uma Nova", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GrauDificuldadeNome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrauDificuldadeNome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.GrauDificuldadeID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.GrauDificuldadeID }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.GrauDificuldadeID })
+        </td>
+    </tr>
+}
+
+</table>

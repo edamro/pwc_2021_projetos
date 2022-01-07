@@ -1,0 +1,33 @@
+﻿@model P3_MVC_EF6_CF.Models.Categoria
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar</h2>
+<p class="error">@ViewBag.ErrorMessage</p>
+<h3>Tem certeza que deseja deletar este item?</h3>
+<br />
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.CategoriaID, "Categoria")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaNome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar a lista", "Index")
+        </div>
+    }
+</div>

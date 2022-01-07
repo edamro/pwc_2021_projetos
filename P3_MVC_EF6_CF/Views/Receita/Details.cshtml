@@ -1,0 +1,61 @@
+﻿@model P3_MVC_EF6_CF.Models.Receita
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Receita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.CategoriaID, "Categoria")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CategoriaNome)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.GrauDificuldadeID, "Grau de Dificuldade")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrauDificuldade.GrauDificuldadeNome)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ReceitaID, "Nome da receita")
+            <!--@Html.DisplayNameFor(model => model.ReceitaNome)-->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceitaNome)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ReceitaID, "Descrição")
+            <!--@Html.DisplayNameFor(model => model.ReceitaDescricao)-->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceitaDescricao)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ReceitaID, "Duração")
+            <!--@Html.DisplayNameFor(model => model.ReceitaDuracao)-->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceitaDuracao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ReceitaID }) |
+    @Html.ActionLink("Voltar a lista", "Index")
+</p>
