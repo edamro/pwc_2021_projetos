@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6302096091044d8b872cde8af88408c2" Name="Diagram1">
+        <EntityTypeShape EntityType="P2_ReceitasModel.Categoria" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2_ReceitasModel.GrauDificuldade" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2_ReceitasModel.Ingrediente" Width="1.5" PointX="1.875" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2_ReceitasModel.QuantidadeIngrediente" Width="2.125" PointX="6.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2_ReceitasModel.Receita" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2_ReceitasModel.sysdiagrams" Width="1.5" PointX="6.375" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2_ReceitasModel.Utilizador" Width="1.5" PointX="6.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="P2_ReceitasModel.FK_Receita_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="P2_ReceitasModel.FK_Receita_GrauDificuldade" ManuallyRouted="false" />
+        <AssociationConnector Association="P2_ReceitasModel.IngredienteQuantidadeIngrediente" ManuallyRouted="false" />
+        <AssociationConnector Association="P2_ReceitasModel.ReceitaIngrediente" ManuallyRouted="false" />
+        <AssociationConnector Association="P2_ReceitasModel.UtilizadorReceita" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

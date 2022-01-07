@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="P2_ReceitasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GrauDificuldade">
+          <Key>
+            <PropertyRef Name="GrauDificuldadeID" />
+          </Key>
+          <Property Name="GrauDificuldadeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrauDificuldade" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ingrediente">
+          <Key>
+            <PropertyRef Name="IngredienteID" />
+          </Key>
+          <Property Name="IngredienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ingrediente" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IngredienteQuantidadeIngrediente">
+          <Key>
+            <PropertyRef Name="IngredienteID" />
+            <PropertyRef Name="QuantidadeIngredienteID" />
+          </Key>
+          <Property Name="IngredienteID" Type="int" Nullable="false" />
+          <Property Name="QuantidadeIngredienteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuantidadeIngrediente">
+          <Key>
+            <PropertyRef Name="QuantidadeIngredienteID" />
+          </Key>
+          <Property Name="QuantidadeIngredienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuantidadeIngrediente" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Receita">
+          <Key>
+            <PropertyRef Name="ReceitaID" />
+          </Key>
+          <Property Name="ReceitaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoriaID" Type="int" Nullable="false" />
+          <Property Name="GrauDificuldadeID" Type="int" Nullable="false" />
+          <Property Name="Receita" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DuracaoMinutos" Type="smallint" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceitaIngrediente">
+          <Key>
+            <PropertyRef Name="ReceitaID" />
+            <PropertyRef Name="IngredienteID" />
+          </Key>
+          <Property Name="ReceitaID" Type="int" Nullable="false" />
+          <Property Name="IngredienteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Utilizador">
+          <Key>
+            <PropertyRef Name="UtilizadorID" />
+          </Key>
+          <Property Name="UtilizadorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Pin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UtilizadorReceita">
+          <Key>
+            <PropertyRef Name="UtilizadorID" />
+            <PropertyRef Name="ReceitaID" />
+          </Key>
+          <Property Name="UtilizadorID" Type="int" Nullable="false" />
+          <Property Name="ReceitaID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IngredienteQuantidadeIngrediente_Ingrediente">
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="1" />
+          <End Role="IngredienteQuantidadeIngrediente" Type="Self.IngredienteQuantidadeIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingrediente">
+              <PropertyRef Name="IngredienteID" />
+            </Principal>
+            <Dependent Role="IngredienteQuantidadeIngrediente">
+              <PropertyRef Name="IngredienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredienteQuantidadeIngrediente_QuantidadeIngrediente">
+          <End Role="QuantidadeIngrediente" Type="Self.QuantidadeIngrediente" Multiplicity="1" />
+          <End Role="IngredienteQuantidadeIngrediente" Type="Self.IngredienteQuantidadeIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantidadeIngrediente">
+              <PropertyRef Name="QuantidadeIngredienteID" />
+            </Principal>
+            <Dependent Role="IngredienteQuantidadeIngrediente">
+              <PropertyRef Name="QuantidadeIngredienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receita_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Receita" Type="Self.Receita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Receita">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receita_GrauDificuldade">
+          <End Role="GrauDificuldade" Type="Self.GrauDificuldade" Multiplicity="1" />
+          <End Role="Receita" Type="Self.Receita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrauDificuldade">
+              <PropertyRef Name="GrauDificuldadeID" />
+            </Principal>
+            <Dependent Role="Receita">
+              <PropertyRef Name="GrauDificuldadeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceitaIngrediente_Ingrediente">
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="1" />
+          <End Role="ReceitaIngrediente" Type="Self.ReceitaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingrediente">
+              <PropertyRef Name="IngredienteID" />
+            </Principal>
+            <Dependent Role="ReceitaIngrediente">
+              <PropertyRef Name="IngredienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceitaIngrediente_Receita">
+          <End Role="Receita" Type="Self.Receita" Multiplicity="1" />
+          <End Role="ReceitaIngrediente" Type="Self.ReceitaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receita">
+              <PropertyRef Name="ReceitaID" />
+            </Principal>
+            <Dependent Role="ReceitaIngrediente">
+              <PropertyRef Name="ReceitaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UtilizadorReceita_Receita">
+          <End Role="Receita" Type="Self.Receita" Multiplicity="1" />
+          <End Role="UtilizadorReceita" Type="Self.UtilizadorReceita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receita">
+              <PropertyRef Name="ReceitaID" />
+            </Principal>
+            <Dependent Role="UtilizadorReceita">
+              <PropertyRef Name="ReceitaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UtilizadorReceita_Utilizador">
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="1" />
+          <End Role="UtilizadorReceita" Type="Self.UtilizadorReceita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizador">
+              <PropertyRef Name="UtilizadorID" />
+            </Principal>
+            <Dependent Role="UtilizadorReceita">
+              <PropertyRef Name="UtilizadorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="P2_ReceitasModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrauDificuldade" EntityType="Self.GrauDificuldade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingrediente" EntityType="Self.Ingrediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngredienteQuantidadeIngrediente" EntityType="Self.IngredienteQuantidadeIngrediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuantidadeIngrediente" EntityType="Self.QuantidadeIngrediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receita" EntityType="Self.Receita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceitaIngrediente" EntityType="Self.ReceitaIngrediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizador" EntityType="Self.Utilizador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UtilizadorReceita" EntityType="Self.UtilizadorReceita" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_IngredienteQuantidadeIngrediente_Ingrediente" Association="Self.FK_IngredienteQuantidadeIngrediente_Ingrediente">
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+            <End Role="IngredienteQuantidadeIngrediente" EntitySet="IngredienteQuantidadeIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredienteQuantidadeIngrediente_QuantidadeIngrediente" Association="Self.FK_IngredienteQuantidadeIngrediente_QuantidadeIngrediente">
+            <End Role="QuantidadeIngrediente" EntitySet="QuantidadeIngrediente" />
+            <End Role="IngredienteQuantidadeIngrediente" EntitySet="IngredienteQuantidadeIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receita_Categoria" Association="Self.FK_Receita_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Receita" EntitySet="Receita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receita_GrauDificuldade" Association="Self.FK_Receita_GrauDificuldade">
+            <End Role="GrauDificuldade" EntitySet="GrauDificuldade" />
+            <End Role="Receita" EntitySet="Receita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceitaIngrediente_Ingrediente" Association="Self.FK_ReceitaIngrediente_Ingrediente">
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+            <End Role="ReceitaIngrediente" EntitySet="ReceitaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceitaIngrediente_Receita" Association="Self.FK_ReceitaIngrediente_Receita">
+            <End Role="Receita" EntitySet="Receita" />
+            <End Role="ReceitaIngrediente" EntitySet="ReceitaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UtilizadorReceita_Receita" Association="Self.FK_UtilizadorReceita_Receita">
+            <End Role="Receita" EntitySet="Receita" />
+            <End Role="UtilizadorReceita" EntitySet="UtilizadorReceita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UtilizadorReceita_Utilizador" Association="Self.FK_UtilizadorReceita_Utilizador">
+            <End Role="Utilizador" EntitySet="Utilizador" />
+            <End Role="UtilizadorReceita" EntitySet="UtilizadorReceita" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="P2_ReceitasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Receita" Relationship="Self.FK_Receita_Categoria" FromRole="Categoria" ToRole="Receita" />
+        </EntityType>
+        <EntityType Name="GrauDificuldade">
+          <Key>
+            <PropertyRef Name="GrauDificuldadeID" />
+          </Key>
+          <Property Name="GrauDificuldadeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrauDificuldade1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Receita" Relationship="Self.FK_Receita_GrauDificuldade" FromRole="GrauDificuldade" ToRole="Receita" />
+        </EntityType>
+        <EntityType Name="Ingrediente">
+          <Key>
+            <PropertyRef Name="IngredienteID" />
+          </Key>
+          <Property Name="IngredienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ingrediente1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="QuantidadeIngrediente" Relationship="Self.IngredienteQuantidadeIngrediente" FromRole="Ingrediente" ToRole="QuantidadeIngrediente" />
+          <NavigationProperty Name="Receita" Relationship="Self.ReceitaIngrediente" FromRole="Ingrediente" ToRole="Receita" />
+        </EntityType>
+        <EntityType Name="QuantidadeIngrediente">
+          <Key>
+            <PropertyRef Name="QuantidadeIngredienteID" />
+          </Key>
+          <Property Name="QuantidadeIngredienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuantidadeIngrediente1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ingrediente" Relationship="Self.IngredienteQuantidadeIngrediente" FromRole="QuantidadeIngrediente" ToRole="Ingrediente" />
+        </EntityType>
+        <EntityType Name="Receita">
+          <Key>
+            <PropertyRef Name="ReceitaID" />
+          </Key>
+          <Property Name="ReceitaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoriaID" Type="Int32" Nullable="false" />
+          <Property Name="GrauDificuldadeID" Type="Int32" Nullable="false" />
+          <Property Name="Receita1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DuracaoMinutos" Type="Int16" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Receita_Categoria" FromRole="Receita" ToRole="Categoria" />
+          <NavigationProperty Name="GrauDificuldade" Relationship="Self.FK_Receita_GrauDificuldade" FromRole="Receita" ToRole="GrauDificuldade" />
+          <NavigationProperty Name="Ingrediente" Relationship="Self.ReceitaIngrediente" FromRole="Receita" ToRole="Ingrediente" />
+          <NavigationProperty Name="Utilizador" Relationship="Self.UtilizadorReceita" FromRole="Receita" ToRole="Utilizador" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Utilizador">
+          <Key>
+            <PropertyRef Name="UtilizadorID" />
+          </Key>
+          <Property Name="UtilizadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Receita" Relationship="Self.UtilizadorReceita" FromRole="Utilizador" ToRole="Receita" />
+        </EntityType>
+        <Association Name="FK_Receita_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Receita" Type="Self.Receita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Receita">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receita_GrauDificuldade">
+          <End Role="GrauDificuldade" Type="Self.GrauDificuldade" Multiplicity="1" />
+          <End Role="Receita" Type="Self.Receita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GrauDificuldade">
+              <PropertyRef Name="GrauDificuldadeID" />
+            </Principal>
+            <Dependent Role="Receita">
+              <PropertyRef Name="GrauDificuldadeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IngredienteQuantidadeIngrediente">
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="*" />
+          <End Role="QuantidadeIngrediente" Type="Self.QuantidadeIngrediente" Multiplicity="*" />
+        </Association>
+        <Association Name="ReceitaIngrediente">
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="*" />
+          <End Role="Receita" Type="Self.Receita" Multiplicity="*" />
+        </Association>
+        <Association Name="UtilizadorReceita">
+          <End Role="Receita" Type="Self.Receita" Multiplicity="*" />
+          <End Role="Utilizador" Type="Self.Utilizador" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="P2_ReceitasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="GrauDificuldade" EntityType="Self.GrauDificuldade" />
+          <EntitySet Name="Ingrediente" EntityType="Self.Ingrediente" />
+          <EntitySet Name="QuantidadeIngrediente" EntityType="Self.QuantidadeIngrediente" />
+          <EntitySet Name="Receita" EntityType="Self.Receita" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Utilizador" EntityType="Self.Utilizador" />
+          <AssociationSet Name="FK_Receita_Categoria" Association="Self.FK_Receita_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Receita" EntitySet="Receita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receita_GrauDificuldade" Association="Self.FK_Receita_GrauDificuldade">
+            <End Role="GrauDificuldade" EntitySet="GrauDificuldade" />
+            <End Role="Receita" EntitySet="Receita" />
+          </AssociationSet>
+          <AssociationSet Name="IngredienteQuantidadeIngrediente" Association="Self.IngredienteQuantidadeIngrediente">
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+            <End Role="QuantidadeIngrediente" EntitySet="QuantidadeIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="ReceitaIngrediente" Association="Self.ReceitaIngrediente">
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+            <End Role="Receita" EntitySet="Receita" />
+          </AssociationSet>
+          <AssociationSet Name="UtilizadorReceita" Association="Self.UtilizadorReceita">
+            <End Role="Receita" EntitySet="Receita" />
+            <End Role="Utilizador" EntitySet="Utilizador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="P2_ReceitasModelStoreContainer" CdmEntityContainer="P2_ReceitasEntities">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Categoria1" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrauDificuldade">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.GrauDificuldade">
+              <MappingFragment StoreEntitySet="GrauDificuldade">
+                <ScalarProperty Name="GrauDificuldadeID" ColumnName="GrauDificuldadeID" />
+                <ScalarProperty Name="GrauDificuldade1" ColumnName="GrauDificuldade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingrediente">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.Ingrediente">
+              <MappingFragment StoreEntitySet="Ingrediente">
+                <ScalarProperty Name="IngredienteID" ColumnName="IngredienteID" />
+                <ScalarProperty Name="Ingrediente1" ColumnName="Ingrediente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuantidadeIngrediente">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.QuantidadeIngrediente">
+              <MappingFragment StoreEntitySet="QuantidadeIngrediente">
+                <ScalarProperty Name="QuantidadeIngredienteID" ColumnName="QuantidadeIngredienteID" />
+                <ScalarProperty Name="QuantidadeIngrediente1" ColumnName="QuantidadeIngrediente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receita">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.Receita">
+              <MappingFragment StoreEntitySet="Receita">
+                <ScalarProperty Name="ReceitaID" ColumnName="ReceitaID" />
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="GrauDificuldadeID" ColumnName="GrauDificuldadeID" />
+                <ScalarProperty Name="Receita1" ColumnName="Receita" />
+                <ScalarProperty Name="DuracaoMinutos" ColumnName="DuracaoMinutos" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizador">
+            <EntityTypeMapping TypeName="P2_ReceitasModel.Utilizador">
+              <MappingFragment StoreEntitySet="Utilizador">
+                <ScalarProperty Name="UtilizadorID" ColumnName="UtilizadorID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="IngredienteQuantidadeIngrediente" TypeName="P2_ReceitasModel.IngredienteQuantidadeIngrediente" StoreEntitySet="IngredienteQuantidadeIngrediente">
+            <EndProperty Name="Ingrediente">
+              <ScalarProperty Name="IngredienteID" ColumnName="IngredienteID" />
+            </EndProperty>
+            <EndProperty Name="QuantidadeIngrediente">
+              <ScalarProperty Name="QuantidadeIngredienteID" ColumnName="QuantidadeIngredienteID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ReceitaIngrediente" TypeName="P2_ReceitasModel.ReceitaIngrediente" StoreEntitySet="ReceitaIngrediente">
+            <EndProperty Name="Ingrediente">
+              <ScalarProperty Name="IngredienteID" ColumnName="IngredienteID" />
+            </EndProperty>
+            <EndProperty Name="Receita">
+              <ScalarProperty Name="ReceitaID" ColumnName="ReceitaID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UtilizadorReceita" TypeName="P2_ReceitasModel.UtilizadorReceita" StoreEntitySet="UtilizadorReceita">
+            <EndProperty Name="Receita">
+              <ScalarProperty Name="ReceitaID" ColumnName="ReceitaID" />
+            </EndProperty>
+            <EndProperty Name="Utilizador">
+              <ScalarProperty Name="UtilizadorID" ColumnName="UtilizadorID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

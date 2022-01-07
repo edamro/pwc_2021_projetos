@@ -1,0 +1,15 @@
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\P2_EF6_Cliente.exe.config
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\P2_EF6_Cliente.exe
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\P2_EF6_Cliente.pdb
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\EntityFramework.dll
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\EntityFramework.SqlServer.dll
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\P2_EF6_DAL.dll
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\P2_EF6_DAL.pdb
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\P2_EF6_DAL.dll.config
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\EntityFramework.xml
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\bin\Debug\EntityFramework.SqlServer.xml
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\obj\Debug\P2_EF6_Cliente.csproj.AssemblyReference.cache
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\obj\Debug\P2_EF6_Cliente.csproj.CoreCompileInputs.cache
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\obj\Debug\P2_EF6_Cliente.csproj.CopyComplete
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\obj\Debug\P2_EF6_Cliente.exe
+C:\APC_2021\Projetos\2021-12-18\Projetos\P2_EF6_Cliente\obj\Debug\P2_EF6_Cliente.pdb
