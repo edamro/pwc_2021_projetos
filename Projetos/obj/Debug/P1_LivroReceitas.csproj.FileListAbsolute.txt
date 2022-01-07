@@ -1,0 +1,7 @@
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\bin\Debug\P1_LivroReceitas.exe.config
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\bin\Debug\P1_LivroReceitas.exe
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\bin\Debug\P1_LivroReceitas.pdb
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\obj\Debug\P1_LivroReceitas.csproj.AssemblyReference.cache
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\obj\Debug\P1_LivroReceitas.csproj.CoreCompileInputs.cache
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\obj\Debug\P1_LivroReceitas.exe
+C:\APC_2021\Projetos\2021-12-18\Projetos\Projetos\obj\Debug\P1_LivroReceitas.pdb

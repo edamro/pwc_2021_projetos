@@ -1,0 +1,20 @@
+PARTE 1 + 2 PROJETO
+As receitas têm:
+▪ Categoria
+▪ Lista de ingredientes, com quantidade em gramas e ingrediente
+▪ Descrição de execução
+▪ Grau de dificuldade
+▪ Duração em minutos2
+
+
+A IMPLEMENTAR NO PROJETO 1 + 2
+1. Criar uma aplicação de consola em C# para implementar algumas das
+funcionalidades descritas.
+2. Criar interfaces e classes utilizador e receita.
+3. Usar herança de classes para criar receitas testadas e por testar.
+4. Implementar polimorfismo na classe Utilizador, para o validar: um método para
+validar por username e password e outro para validar somente com pin de 4
+digitos.
+5. Ao arrancar, a aplicação pergunta ao utilizador quantas receitas pretende
+adicionar.
+6. Usar uma lista para guardar as receitas, que depois serão listadas no ecrã
